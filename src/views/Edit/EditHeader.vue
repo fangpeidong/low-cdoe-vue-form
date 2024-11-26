@@ -1,0 +1,37 @@
+<template>
+  <div class="header-wrapper">
+    <div class="header">
+      <div class="main">
+        <EditToolbar />
+      </div>
+    </div>
+  </div>
+</template>
+
+<script setup>
+import EditToolbar from './EditToolbar';
+</script>
+
+<style lang="scss" scoped>
+.header-wrapper {
+  padding: 12px 0;
+  background-color: #fff;
+  border-bottom: 1px solid #e8e8e8;
+}
+
+.header {
+  display: flex;
+  margin: 0 24px;
+  .left {
+    flex: 1;
+  }
+  .main {
+    flex: 1;
+    text-align: center;
+  }
+  .right {
+    flex: 1;
+    text-align: right;
+  }
+}
+</style>
