@@ -9,7 +9,13 @@
 
 <script setup>
 defineProps({
-  title: String,
-  placeholder: String
+  title: {
+    type: String,
+    default: ''
+  },
+  placeholder: {
+    type: String,
+    default: ''
+  }
 });
 </script>

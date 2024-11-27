@@ -15,8 +15,17 @@
 
 <script setup>
 defineProps({
-  title: String,
-  isVertical: Boolean,
-  list: Array
+  title: {
+    type: String,
+    default: ''
+  },
+  isVertical: {
+    type: Boolean,
+    default: false
+  },
+  list: {
+    type: Array,
+    default: () => []
+  }
 });
 </script>

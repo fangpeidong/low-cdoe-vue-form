@@ -16,8 +16,14 @@
 import { computed } from 'vue';
 
 const props = defineProps({
-  title: String,
-  desc: String
+  title: {
+    type: String,
+    default: ''
+  },
+  desc: {
+    type: String,
+    default: ''
+  }
 });
 
 const descTextList = computed(() => props.desc.split('\n'));

@@ -13,8 +13,14 @@
 import { computed } from 'vue';
 
 const props = defineProps({
-  text: String,
-  isCenter: Boolean
+  text: {
+    type: String,
+    default: ''
+  },
+  isCenter: {
+    type: Boolean,
+    default: false
+  }
 });
 
 const textList = computed(() => props.text.split('\n'));
