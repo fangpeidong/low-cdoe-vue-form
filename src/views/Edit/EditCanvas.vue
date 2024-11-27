@@ -9,7 +9,7 @@
         }"
       >
         <div class="component">
-          <!-- <component :is="getComponent(c)" v-bind="c.props" /> -->
+          <component :is="getComponent(c)" v-bind="c.props" />
         </div>
       </div>
     </template>
@@ -17,7 +17,7 @@
 </template>
 
 <script setup>
-// import { getComponent } from '@/components';
+import { getComponent } from '@/components';
 import { useStore } from '@/stores';
 import { storeToRefs } from 'pinia';
 const store = useStore();

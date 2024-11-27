@@ -13,7 +13,7 @@ const data = {
     // Info
     {
       fe_id: 'c1', // 注意，由于统计页，左侧和中间需要数据完全一直，所以要写死 fe_id ，不能用 Random.id()
-      type: 'questionInfo', // 组件类型，不能重复，前后端统一好
+      type: 'info', // 组件类型，不能重复，前后端统一好
       title: '问卷信息',
       isHidden: false,
       isLocked: false,
@@ -22,7 +22,7 @@ const data = {
     // Title
     {
       fe_id: 'c2',
-      type: 'questionTitle', // 组件类型，不能重复，前后端统一好
+      type: 'title', // 组件类型，不能重复，前后端统一好
       title: '标题',
       isHidden: false,
       isLocked: false,
@@ -31,7 +31,7 @@ const data = {
     // Input
     {
       fe_id: 'c3',
-      type: 'questionInput',
+      type: 'input',
       title: '输入框1',
       isHidden: false,
       isLocked: false,
@@ -40,7 +40,7 @@ const data = {
     // Input
     {
       fe_id: 'c4',
-      type: 'questionInput',
+      type: 'input',
       title: '输入框2',
       isHidden: false,
       isLocked: false,
@@ -49,7 +49,7 @@ const data = {
     // Textarea
     {
       fe_id: 'c5',
-      type: 'questionTextarea',
+      type: 'textarea',
       title: '多行输入',
       isHidden: false,
       isLocked: false,
@@ -58,7 +58,7 @@ const data = {
     // Paragraph
     {
       fe_id: 'c6',
-      type: 'questionParagraph',
+      type: 'paragraph',
       title: '段落',
       isHidden: false,
       isLocked: false,
@@ -67,7 +67,7 @@ const data = {
     // Radio
     {
       fe_id: 'c7',
-      type: 'questionRadio',
+      type: 'radio',
       title: '单选',
       isHidden: false,
       isLocked: false,
@@ -85,7 +85,7 @@ const data = {
     // Checkbox
     {
       fe_id: 'c8',
-      type: 'questionCheckbox',
+      type: 'checkbox',
       title: '多选',
       isHidden: false,
       isLocked: false,

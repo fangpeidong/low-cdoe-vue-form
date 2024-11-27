@@ -1,5 +1,5 @@
 <template>
-  <Space>
+  <a-space>
     <a-tooltip title="删除">
       <a-button
         shape="circle"
@@ -60,7 +60,7 @@
     <a-tooltip title="重做">
       <a-button shape="circle" :icon="h(RedoOutlined)" @click="redo"></a-button>
     </a-tooltip>
-  </Space>
+  </a-space>
 </template>
 
 <script setup>
