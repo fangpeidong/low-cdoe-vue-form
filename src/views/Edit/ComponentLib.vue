@@ -20,10 +20,21 @@
 </template>
 
 <script setup>
+import { nanoid } from 'nanoid';
 import { componentConfGroup } from '@/components';
+import { useStore } from '@/stores';
+
+const store = useStore();
 
 function handleClick(c) {
   console.log(c);
+  const { title, type, defaultProps } = c;
+  store.addComponent({
+    fe_id: nanoid(),
+    title,
+    type,
+    props: defaultProps
+  });
 }
 </script>
 

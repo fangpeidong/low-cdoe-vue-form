@@ -4,9 +4,10 @@
       <div
         :class="{
           'component-wrapper': true,
-          selected: false,
+          selected: c.fe_id === store.selectedId,
           locked: false
         }"
+        @click.stop="handleClick(c.fe_id)"
       >
         <div class="component">
           <component :is="getComponent(c)" v-bind="c.props" />
@@ -22,6 +23,10 @@ import { useStore } from '@/stores';
 import { storeToRefs } from 'pinia';
 const store = useStore();
 const { componentList } = storeToRefs(store);
+
+function handleClick(id) {
+  store.changeSelectedId(id);
+}
 </script>
 
 <style lang="scss" scoped>
