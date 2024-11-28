@@ -10,7 +10,10 @@
         @click.stop="handleClick(c.fe_id)"
       >
         <div class="component">
-          <component :is="getComponent(c)" v-bind="c.props" />
+          <component
+            :is="getComponentConfByType(c.type)?.Component"
+            v-bind="c.props"
+          />
         </div>
       </div>
     </template>
@@ -18,7 +21,7 @@
 </template>
 
 <script setup>
-import { getComponent } from '@/components';
+import { getComponentConfByType } from '@/components';
 import { useStore } from '@/stores';
 import { storeToRefs } from 'pinia';
 const store = useStore();

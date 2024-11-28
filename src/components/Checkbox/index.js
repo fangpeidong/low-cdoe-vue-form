@@ -1,9 +1,11 @@
 import Component from './Component.vue';
+import PropComponent from './PropComponent.vue';
 
 export default {
   title: '多选',
   type: 'checkbox',
   Component,
+  PropComponent,
   defaultProps: {
     title: '多选标题',
     isVertical: false,

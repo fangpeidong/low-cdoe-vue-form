@@ -1,3 +1,4 @@
+import { getNextSelectedId } from '@/utils';
 import { defineStore } from 'pinia';
 
 export const useStore = defineStore('Store', {
@@ -31,6 +32,24 @@ export const useStore = defineStore('Store', {
         this.componentList.splice(index + 1, 0, payload);
       }
       this.selectedId = payload.fe_id;
+    },
+    // 修改组件属性
+    changeComponentProps(payload) {
+      const { fe_id, newProps } = payload;
+      this.componentList.forEach((c) => {
+        if (c.fe_id === fe_id) {
+          c.props = { ...newProps };
+        }
+      });
+    },
+    // 删除选中组件
+    removeSelectedComponent() {
+      const removeId = this.selectedId;
+      // const { componentList, selectedId: removeId } = state;
+      const newSelectedId = getNextSelectedId(removeId, this.componentList);
+      this.selectedId = newSelectedId;
+      const index = this.componentList.findIndex((c) => c.fe_id === removeId);
+      this.componentList.splice(index, 1);
     }
   }
 });

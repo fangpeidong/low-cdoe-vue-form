@@ -75,14 +75,18 @@ import {
   UndoOutlined,
   RedoOutlined
 } from '@ant-design/icons-vue';
+import { useStore } from '@/stores';
 
+const store = useStore();
 const isLocked = ref(false);
 const isFirst = ref(false);
 const isLast = ref(false);
 const copiedComponent = ref(null);
 
 // 删除
-function handleDelete() {}
+function handleDelete() {
+  store.removeSelectedComponent();
+}
 // 锁定
 function handleLock() {}
 // 复制

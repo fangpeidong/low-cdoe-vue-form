@@ -1,9 +1,11 @@
 import Component from './Component.vue';
+import PropComponent from './PropComponent.vue';
 
 export default {
   title: '单选',
   type: 'radio',
   Component,
+  PropComponent,
   defaultProps: {
     title: '单选标题',
     isVertical: false,

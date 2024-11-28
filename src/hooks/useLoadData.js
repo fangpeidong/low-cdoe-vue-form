@@ -118,8 +118,6 @@ function useLoadData() {
   });
   loading.value = false;
 
-  // console.log(store, 'store');
-
   return { errorMsg: '', loading: false };
 }
 
