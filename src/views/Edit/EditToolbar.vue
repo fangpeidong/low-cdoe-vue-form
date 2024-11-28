@@ -12,38 +12,26 @@
         shape="circle"
         :icon="h(LockOutlined)"
         @click="handleLock"
-        :type="isLocked ? 'primary' : 'default'"
+        :type="store.isLocked ? 'primary' : 'default'"
       ></a-button>
     </a-tooltip>
     <a-tooltip title="复制">
-      <a-button
-        shape="circle"
-        :icon="h(CopyOutlined)"
-        @click="
-          {
-            copy;
-          }
-        "
-      ></a-button>
+      <a-button shape="circle" :icon="h(CopyOutlined)" @click="copy"></a-button>
     </a-tooltip>
     <a-tooltip title="粘贴">
       <a-button
         shape="circle"
         :icon="h(BlockOutlined)"
         @click="paste"
-        :disabled="copiedComponent == null"
+        :disabled="store.copiedComponent == null"
       ></a-button>
     </a-tooltip>
     <a-tooltip title="上移">
       <a-button
         shape="circle"
         :icon="h(UpOutlined)"
-        @click="
-          {
-            moveUp;
-          }
-        "
-        :disabled="isFirst"
+        @click="moveUp"
+        :disabled="store.isFirst"
       ></a-button>
     </a-tooltip>
     <a-tooltip title="下移">
@@ -51,7 +39,7 @@
         shape="circle"
         :icon="h(DownOutlined)"
         @click="moveDown"
-        :disabled="isLast"
+        :disabled="store.isLast"
       ></a-button>
     </a-tooltip>
     <a-tooltip title="撤销">
@@ -78,7 +66,7 @@ import {
 import { useStore } from '@/stores';
 
 const store = useStore();
-const isLocked = ref(false);
+
 const isFirst = ref(false);
 const isLast = ref(false);
 const copiedComponent = ref(null);
@@ -88,20 +76,34 @@ function handleDelete() {
   store.removeSelectedComponent();
 }
 // 锁定
-function handleLock() {}
+function handleLock() {
+  store.toggleComponentLocked();
+}
 // 复制
-function copy() {}
+function copy() {
+  store.copySelectedComponent();
+}
 // 粘贴
-function paste() {}
+function paste() {
+  store.pasteCopiedComponent();
+}
 
 // 上移
 function moveUp() {
-  if (isFirst) return;
+  if (store.isFirst) return;
+  store.moveComponent({
+    oldIndex: store.selectedIndex,
+    newIndex: store.selectedIndex - 1
+  });
 }
 
 // 下移
 function moveDown() {
-  if (isLast) return;
+  if (store.isLast) return;
+  store.moveComponent({
+    oldIndex: store.selectedIndex,
+    newIndex: store.selectedIndex + 1
+  });
 }
 
 // 撤销

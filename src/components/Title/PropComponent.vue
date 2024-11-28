@@ -1,5 +1,5 @@
 <template>
-  <a-form layout="vertical" :model="formState">
+  <a-form layout="vertical" :model="formState" :disabled="store.isLocked">
     <a-form-item
       label="标题内容"
       :rules="[{ required: true, message: '请输入' }]"
@@ -25,6 +25,7 @@
 </template>
 
 <script setup>
+import { useStore } from '@/stores';
 import { ref, watch } from 'vue';
 
 const props = defineProps({
@@ -34,6 +35,8 @@ const props = defineProps({
 });
 
 const emits = defineEmits(['changeProps']);
+
+const store = useStore();
 
 const formState = ref({ ...props });
 

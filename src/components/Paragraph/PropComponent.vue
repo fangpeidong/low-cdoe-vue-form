@@ -1,10 +1,10 @@
 <template>
-  <a-form layout="vertical" :model="formState">
+  <a-form layout="vertical" :model="formState" :disabled="store.isLocked">
     <a-form-item
       label="段落内容"
       :rules="[{ required: true, message: '请输入' }]"
     >
-      <a-input v-model:value="formState.text" />
+      <a-textarea v-model:value="formState.text" />
     </a-form-item>
     <a-form-item>
       <a-checkbox v-model:checked="formState.isCenter">居中显示</a-checkbox>
@@ -13,12 +13,15 @@
 </template>
 
 <script setup>
+import { useStore } from '@/stores';
 import { ref, watch } from 'vue';
 
 const props = defineProps({
   text: String,
   isCenter: Boolean
 });
+
+const store = useStore();
 
 const formState = ref({ ...props });
 

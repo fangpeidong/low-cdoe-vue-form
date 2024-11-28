@@ -1,5 +1,5 @@
 <template>
-  <a-form layout="vertical" :model="formState">
+  <a-form layout="vertical" :model="formState" :disabled="store.isLocked">
     <a-form-item
       label="标题"
       name="title"
@@ -14,12 +14,15 @@
 </template>
 
 <script setup>
+import { useStore } from '@/stores';
 import { ref, watch } from 'vue';
 
 const props = defineProps({
   title: String,
   placeholder: String
 });
+
+const store = useStore();
 
 const formState = ref({ ...props });
 

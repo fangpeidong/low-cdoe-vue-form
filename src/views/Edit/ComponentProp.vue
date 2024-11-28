@@ -1,7 +1,8 @@
 <template>
   <component
+    v-if="curPropComp"
     v-bind="store.selectedComponent.props"
-    :is="getComponentConfByType(store.selectedComponent.type).PropComponent"
+    :is="curPropComp"
     :key="store.selectedComponent.fe_id"
     @changeProps="changeProps"
   ></component>
@@ -10,8 +11,14 @@
 <script setup>
 import { getComponentConfByType } from '@/components';
 import { useStore } from '@/stores';
+import { computed } from 'vue';
 
 const store = useStore();
+
+const curPropComp = computed(() => {
+  const { type = '' } = store.selectedComponent || {};
+  return getComponentConfByType(type)?.PropComponent;
+});
 
 function changeProps(newProps) {
   store.changeComponentProps({
